@@ -5,6 +5,7 @@ from flask_wtf import FlaskForm, RecaptchaField
 from wtforms import StringField, PasswordField, IntegerField, BooleanField
 from wtforms.validators import InputRequired, Length, AnyOf, Email
 
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Mysecret!'
 app.config['WTF_CSRF_ENABLED'] = True
