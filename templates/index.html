@@ -17,6 +17,21 @@
         </u>
         {{ form.password.label }}
         {{ form.password }}
+
+        {{ form.age.label }}
+        {{ form.age }}
+
+        {{ form.true.label }}
+        {{ form.true }}
+
+        {{ form.email.label }}
+        {{ form.email }}
+        <u>
+            {% for err in form.email.errors %}
+            <li style="color: red">{{ err }}</li>
+            {% endfor %}
+        </u>
+
         <input type="submit" value="Submit">
     </form>
 </body>
