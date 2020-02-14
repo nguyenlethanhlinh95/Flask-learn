@@ -1,13 +1,15 @@
 from xmlrpc.client import Boolean
 
 from flask import Flask, render_template
-from flask_wtf import FlaskForm
+from flask_wtf import FlaskForm, RecaptchaField
 from wtforms import StringField, PasswordField, IntegerField, BooleanField
 from wtforms.validators import InputRequired, Length, AnyOf, Email
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Mysecret!'
 app.config['WTF_CSRF_ENABLED'] = True
+app.config['RECAPTCHA_PUBLIC_KEY'] = '6LcJxdgUAAAAAJUv0cqHutzKMAJRyJZOBCi3sqPW'
+app.config['RECAPTCHA_PRIVATE_KEY'] = '6LcJxdgUAAAAANDmf2EfDcG9VdlaUdhbuCTduXtz'
 
 class LoginForm(FlaskForm):
     username = StringField('username', validators=[InputRequired('A username is required!'),
@@ -16,6 +18,7 @@ class LoginForm(FlaskForm):
     age = IntegerField('age', default=25)
     true = BooleanField('Click here')
     email = StringField('email', validators=[Email()])
+    recaptcha = RecaptchaField()
 
 class User:
     def __init__(self, username, password, age, email):
