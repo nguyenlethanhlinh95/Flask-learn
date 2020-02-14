@@ -7,7 +7,7 @@ from wtforms.validators import InputRequired, Length, AnyOf, Email
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Mysecret!'
-
+app.config['WTF_CSRF_ENABLED'] = True
 
 class LoginForm(FlaskForm):
     username = StringField('username', validators=[InputRequired('A username is required!'),

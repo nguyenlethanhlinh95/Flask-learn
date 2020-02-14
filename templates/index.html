@@ -1,3 +1,4 @@
+{% from '_renderField.html' import renderfield %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,13 +9,15 @@
     <h1>The form is below !</h1>
     <form action="/" method="POST">
         {{ form.csrf_token }}
-        {{ form.username.label }}
-        {{ form.username }}
-        <u>
-            {% for err in form.username.errors %}
-            <li style="color: red">{{ err }}</li>
-            {% endfor %}
-        </u>
+{#        {{ form.username.label }}#}
+{#        {{ form.username }}#}
+{#        <u>#}
+{#            {% for err in form.username.errors %}#}
+{#            <li style="color: red">{{ err }}</li>#}
+{#            {% endfor %}#}
+{#        </u>#}
+        {{ renderfield(form.username) }}
+
         {{ form.password.label }}
         {{ form.password }}
 
